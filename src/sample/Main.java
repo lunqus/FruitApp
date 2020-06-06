@@ -29,8 +29,8 @@ public class Main extends Application implements EventHandler {
         primaryStage.setTitle("Favorite Fruit");
 
         title = new Label("What fruits do you like?");
-        response = new Label("No Respnose");
-        selected = new Label("Not Selected");
+        response = new Label("");
+        selected = new Label("");
 
         bananaCB = new CheckBox("Banana");
         mangoCB = new CheckBox("Mango");
@@ -59,6 +59,12 @@ public class Main extends Application implements EventHandler {
 
     void showAll() {
         fruits = "";
+        if(bananaCB.isSelected()) fruits += " Banana";
+        if(mangoCB.isSelected()) fruits += " Mango";
+        if(papayaCB.isSelected()) fruits += " Papaya";
+        if(grapefruitCB.isSelected()) fruits += " Grapefruit";
+
+        selected.setText("Fruits selected: " + fruits);
 
     }
 
@@ -72,11 +78,28 @@ public class Main extends Application implements EventHandler {
         Object fruitChecked = event.getSource();
 
         if(bananaCB.equals(fruitChecked)) {
-            System.out.println("Clicked!");
-
             if(bananaCB.isSelected()) {
                 response.setText("Banana Selected");
             } else response.setText("Banana cleared!");
+            showAll();
+        }
+        if(mangoCB.equals(fruitChecked)) {
+            if(mangoCB.isSelected()) {
+                response.setText("Mango Selected");
+            } else response.setText("Mango cleared!");
+            showAll();
+        }
+        if(papayaCB.equals(fruitChecked)) {
+            if(papayaCB.isSelected()) {
+                response.setText("Papaya Selected");
+            } else response.setText("Papaya cleared!");
+            showAll();
+        }
+        if(grapefruitCB.equals(fruitChecked)) {
+            if(grapefruitCB.isSelected()) {
+                response.setText("Grapafruit Selected");
+            } else response.setText("Grapafruit cleared!");
+            showAll();
         }
     }
 
